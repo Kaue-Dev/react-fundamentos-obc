@@ -91,3 +91,53 @@ function Container () {
 
 ## Conhecendo o Vite
 
+- Vite é uma ferramenta que ajuda o processo de Build de aplicações web
+
+- O Vite possui um servidor de desenvolvimento
+
+- O Vite também possui um empacotador pré-configurado para gerar assets otimizados para produção
+
+- Cumpre um papel semelhante ao do Webpack
+
+```bash
+npm create vite@latest
+```
+
+## Dados Dinâmicos no JSX
+
+> Um dado dinâmico é um dado que pode ser manipulado ou fornecido pelo próprio Javascript
+
+```jsx
+const text = "Este é um texto"
+
+return (
+  <div>
+    <h1>Olá, React!</h1>
+    <p>{text}</p>
+  </div>
+)
+```
+
+```jsx
+<p>It's easy, like 1 + 1 is {1 + 1}</p>
+```
+
+## Criando Componentes
+
+> Componentes devem ser nomeados utilizando PascalCase
+
+> Componentes devem ficar dentro de uma pasta chamada "components"
+
+```jsx
+export const Title = () => {
+  return <h1>Olá, React!</h1>
+}
+```
+
+```jsx
+import { Title } from "./components/Title"
+
+export const App = () => {
+  return <Title />
+}
+```
