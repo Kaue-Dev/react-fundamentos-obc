@@ -141,3 +141,60 @@ export const App = () => {
   return <Title />
 }
 ```
+
+## Conhecendo o Fragment
+
+> Existe uma regra nos componentes React, onde os componentes podem retornar apenas um elemento "pai"
+
+- Para resolver isso e evitar uma poluição no HTML, existe um componente do React chamado Fragment, que deve ser usado ao redor de todo o conteúdo
+
+```jsx
+import { Fragment } from "react"
+
+export const App = () => {
+  return (
+    <Fragment>
+      <h1>Hello, React!</h1>
+      <p>Its easy, like 1 + 1 is {1 + 1}</p>
+    </Fragment>
+  )
+}
+```
+
+> Atualmente não é mais necessário importar o Fragment para utilizá-lo
+
+```jsx
+export const App = () => {
+  return (
+    <>
+      <h1>Hello, React!</h1>
+      <p>Its easy, like 1 + 1 is {1 + 1}</p>
+    </>
+  )
+}
+```
+
+## Props no React
+
+```jsx
+export const Card = ({ posterImage, posterName }) => {
+  return (
+    <div>
+      <h1>{posterName}</h1>
+      <img src={posterImage} alt="Pôster" />
+    </div>
+  )
+}
+```
+
+```jsx
+export const App = () => {
+  return (
+    <div>
+      <Card posterImage="./poster-1.jpg" posterName="Pôster 1" />
+      <Card posterImage="./poster-2.jpg" posterName="Pôster 2" />
+    </div>
+  )
+}
+```
+
