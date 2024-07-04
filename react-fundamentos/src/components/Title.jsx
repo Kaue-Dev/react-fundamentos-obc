@@ -1,3 +1,4 @@
-export const Title = () => {
-  return <h1>Olá, React!</h1>
+/* eslint-disable react/prop-types */
+export const Title = (props) => {
+  return <h1>{props.children}</h1>
 }

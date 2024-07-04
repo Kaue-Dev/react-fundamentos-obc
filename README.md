@@ -198,3 +198,120 @@ export const App = () => {
 }
 ```
 
+## Componentes com Children
+
+```jsx
+export const Title = (props) => {
+  return <h1>{props.children}</h1>
+}
+```
+
+```jsx
+<Title>
+  Aqui vai o Children...
+</Title>
+```
+
+## Eventos do Javascript no React
+
+```jsx
+export const App = () => {
+  return (
+    <button onClick={() => alert("Clicou!")}>
+      Clique Aqui!
+    </button>
+  )
+}
+```
+
+```jsx
+const handleClick = () => {
+  alert("Clicou!")
+}
+
+export const App = () => {
+  return (
+    <button onClick={handleClick}>
+      Clique Aqui!
+    </button>
+  )
+}
+```
+
+## O State
+
+> É um recurso do React que permite ter informações em tela que são renderizadas dinamicamente
+
+```jsx
+export const App = () => {
+
+  const state = useState("Clique Aqui!")
+  
+  function handleClick() {
+    state[1]("Clicou!")
+  }
+
+  return (
+    <button onClick={handleClick}>
+      {state[0]}
+    </button>
+  )
+}
+```
+
+- A convenção para nomear os States no React é escrever o nome da variável  e  em seguida a palavra "set" junto ao nome da variável
+
+```jsx
+export const App = () => {
+  // [Valor, FunçãoModificadora]
+  const [buttonText, setButtonText] = useState("Clique Aqui!")
+  
+  function handleClick() {
+    setButtonText("Clicou!")
+  }
+
+  return (
+    <button onClick={handleClick}>
+      {buttonText}
+    </button>
+  )
+}
+```
+
+## Conhecendo os Hooks do React
+
+> Os Hooks só podem ser chamados em componentes React
+
+- Criando Custom Hook
+```jsx
+// useCounter.jsx
+
+export const useCounter = () => {
+  const [count, setCount] = useState(0)
+  const increment = () => setCount(count + 1)
+  
+  return { count, increment }
+}
+```
+
+- Usando Custom Hook em outro Componente
+```jsx
+// App.jsx
+
+export const App = () => {
+
+  const { count, increment } = useCounter()
+
+  return (
+    <div>
+      <button onClick={increment}>
+        Incrementar
+      </button>
+      <p>{count}</p>
+    </div>
+  )
+}
+```
+
+> Os Hooks do React não podem ser chamados dentro de blocos condicionais como IF ou Loops
+
