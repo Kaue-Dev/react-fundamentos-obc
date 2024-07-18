@@ -283,6 +283,7 @@ export const App = () => {
 > Os Hooks só podem ser chamados em componentes React
 
 - Criando Custom Hook
+
 ```jsx
 // useCounter.jsx
 
@@ -295,6 +296,7 @@ export const useCounter = () => {
 ```
 
 - Usando Custom Hook em outro Componente
+
 ```jsx
 // App.jsx
 
@@ -314,4 +316,93 @@ export const App = () => {
 ```
 
 > Os Hooks do React não podem ser chamados dentro de blocos condicionais como IF ou Loops
+
+## Controlando Inputs com State
+
+```jsx
+export const App = () => {
+
+  const [name, setName] = useState('')
+  
+  return (
+    <div>
+      <label htmlFor="nameInput">Name:</label>
+      <input
+        type="text"
+        id="nameInput"
+        onChange={(ev) => setName(ev.target.value)}
+      />
+    </div>
+  )
+}
+```
+
+## Compartilhando Estados entre Componentes
+
+```jsx
+// Componente Pai
+export const App = () => {
+
+  const [name, setName] = useState('')
+  
+  return (
+    <div>
+      <label htmlFor="nameInput">Name:</label>
+      <Input setName={setName} />
+    </div>
+  )
+}
+
+// Componente Filho
+export const Input = ({ setName }) => {
+  return (
+    <input
+      type="text"
+      id="nameInput"
+      onChange={(ev) => setName(ev.target.value)}
+    />
+  )
+}
+```
+
+## Renderização Condicional
+
+> Renderizar algo na tela com base em um estado ou variável
+
+```jsx
+export const App = () => {
+
+  const [isVisible, setIsVisible] = useState(true)
+
+  return (
+    <div>
+      {isVisible ? (
+        <h1>Is Visible</h1>
+      ) : (
+        <h1>Is Not Visible</h1>
+      )}
+    </div>
+  )
+}
+```
+
+## Renderização de Listas
+
+```jsx
+const games = [
+  { id: 1, title: "Valorant" },
+  { id: 2, title: "Minecraft" },
+  { id: 3, title: "Elden Ring" },
+]
+
+export const App = () => {
+  return (
+    <div>
+      {games.map((game) => (
+        <p key={game.id}>{game.name}</p>
+      ))}
+    </div>
+  );
+};
+```
 
